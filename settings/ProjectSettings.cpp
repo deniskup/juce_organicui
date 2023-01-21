@@ -37,6 +37,7 @@ ProjectSettings::ProjectSettings() :
 	floatDefautSize = dashboardDefaults.addPoint2DParameter("Float Size", "Default Size for this type", false);
 	floatDefaultStyle = dashboardDefaults.addEnumParameter("Float Style", "Default style for this type", false);
 	intDefautSize = dashboardDefaults.addPoint2DParameter("Int Size", "Default size for this type", false);
+	intRangeDefaultSize = dashboardDefaults.addPoint2DParameter("IntRange Size", "Default size for this type", false);
 	intDefaultStyle = dashboardDefaults.addEnumParameter("Int Style", "Default style for this type", false);
 	stringDefaultSize = dashboardDefaults.addPoint2DParameter("String Size", "Default size for this type", false);
 	enumDefaultSize = dashboardDefaults.addPoint2DParameter("Enum Style", "Default style for this type", false);
@@ -53,6 +54,7 @@ ProjectSettings::ProjectSettings() :
 	floatDefaultStyle->canBeDisabledByUser = true;
 	intDefautSize->canBeDisabledByUser = true;
 	intDefaultStyle->canBeDisabledByUser = true;
+	intRangeDefaultSize->canBeDisabledByUser = true;
 	stringDefaultSize->canBeDisabledByUser = true;
 	enumDefaultSize->canBeDisabledByUser = true;
 	enumDefaultStyle->canBeDisabledByUser = true;
@@ -68,6 +70,7 @@ ProjectSettings::ProjectSettings() :
 	floatDefaultStyle->addOption("Default", -1)->addOption("Horizontal Slider", 0)->addOption("Vertical Slider", 1)->addOption("Rotary Slider", 5)->addOption("Text", 2)->addOption("Time", 3)->addOption("Color Circle", 10)->addOption("Color Square", 11);
 	intDefautSize->setPoint(200, 40);
 	intDefaultStyle->addOption("Default", -1)->addOption("Horizontal Slider", 0)->addOption("Vertical Slider", 1)->addOption("Rotary Slider", 5)->addOption("Text", 2)->addOption("Time", 3);
+	intRangeDefaultSize->setPoint(200, 40);
 	stringDefaultSize->setPoint(200, 40);
 	enumDefaultSize->setPoint(200, 40);
 	enumDefaultStyle->addOption("Default", -1)->addOption("Horizontal Bar", 20)->addOption("Vertical Bar", 21);

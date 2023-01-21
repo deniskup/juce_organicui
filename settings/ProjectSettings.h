@@ -43,6 +43,7 @@ public:
 	Point2DParameter* targetDefaultSize;
 	Point2DParameter* p2dDefaultSize;
 	Point2DParameter* p3dDefaultSize;
+	Point2DParameter* intRangeDefaultSize;
 
 	ControllableContainer customValuesCC;
 	ControllableContainer customRangesCC;

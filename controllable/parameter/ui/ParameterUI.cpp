@@ -202,6 +202,13 @@ void ParameterUI::addPopupMenuItems(PopupMenu* p)
 				rangeMenu.addItem(-54, "-180 : 180");
 				rangeMenu.addItem(-55, "0 : 360");
 			}
+			// else if (parameter->type == Parameter::INTRANGE)
+			// {
+			// 	rangeMenu.addItem(-70, "0 : 1");
+			// 	rangeMenu.addItem(-71, "-1 : 1");
+			// 	rangeMenu.addItem(-72, "0 : 100");
+			// 	rangeMenu.addItem(-73, "-100 : 100");
+			// }
 			else if (parameter->type == Parameter::POINT2D || parameter->type == Parameter::POINT3D)
 			{
 				rangeMenu.addItem(-70, "0 : 1");

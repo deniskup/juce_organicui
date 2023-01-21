@@ -12,6 +12,7 @@ DashboardControllableItem::DashboardControllableItem(Controllable* item) :
 		case Controllable::BOOL: dp = ProjectSettings::getInstance()->boolDefaultSize; break;
 		case Controllable::FLOAT: dp = ProjectSettings::getInstance()->floatDefautSize; break;
 		case Controllable::INT: dp = ProjectSettings::getInstance()->intDefautSize; break;
+		case Controllable::INTRANGE: dp = ProjectSettings::getInstance()->intRangeDefaultSize; break;
 		case Controllable::STRING: dp = ProjectSettings::getInstance()->stringDefaultSize; break;
 		case Controllable::COLOR: dp = ProjectSettings::getInstance()->colorDefaultSize; break;
 		case Controllable::ENUM: dp = ProjectSettings::getInstance()->enumDefaultSize; break;

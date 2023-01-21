@@ -48,6 +48,7 @@ ControllableContainer::ControllableContainer(const String& niceName) :
 	scriptObject.setMethod("addTrigger", ControllableContainer::addTriggerFromScript);
 	scriptObject.setMethod("addBoolParameter", ControllableContainer::addBoolParameterFromScript);
 	scriptObject.setMethod("addIntParameter", ControllableContainer::addIntParameterFromScript);
+	scriptObject.setMethod("addIntRangeParameter", ControllableContainer::addIntRangeParameterFromScript);
 	scriptObject.setMethod("addFloatParameter", ControllableContainer::addFloatParameterFromScript);
 	scriptObject.setMethod("addStringParameter", ControllableContainer::addStringParameterFromScript);
 	scriptObject.setMethod("addEnumParameter", ControllableContainer::addEnumParameterFromScript);
@@ -173,6 +174,15 @@ IntParameter* ControllableContainer::addIntParameter(const String& _niceName, co
 	addControllable(p);
 	return p;
 }
+
+IntRangeParameter* ControllableContainer::addIntRangeParameter(const String& _niceName, const String& _description, const bool& enabled)
+{
+	String targetName = (Engine::mainEngine == nullptr || Engine::mainEngine->isLoadingFile) ? _niceName : getUniqueNameInContainer(_niceName);
+	IntRangeParameter* p = new IntRangeParameter(targetName, _description, enabled);
+	addControllable(p);
+	return p;
+}
+
 
 BoolParameter* ControllableContainer::addBoolParameter(const String& _niceName, const String& _description, const bool& value, const bool& enabled)
 {
@@ -1225,6 +1235,19 @@ var ControllableContainer::addIntParameterFromScript(const var::NativeFunctionAr
 	if (c != nullptr) return c->getScriptObject();
 
 	Parameter* p = cc->addIntParameter(args.arguments[0], args.arguments[1], (int)args.arguments[2], args.numArguments >= 4 ? (int)args.arguments[3] : INT32_MIN, args.numArguments >= 5 ? (int)args.arguments[4] : INT32_MAX);
+	p->isCustomizableByUser = true;
+	return p->getScriptObject();
+}
+
+var ControllableContainer::addIntRangeParameterFromScript(const var::NativeFunctionArgs& args)
+{
+	ControllableContainer* cc = getObjectFromJS<ControllableContainer>(args);
+	if (!checkNumArgs(cc->niceName, args, 2)) return var();
+
+	Controllable* c = cc->getControllableByName(args.arguments[0], true, false);
+	if (c != nullptr) return c->getScriptObject();
+
+	Parameter* p = cc->addIntRangeParameter(args.arguments[0], args.arguments[1]);
 	p->isCustomizableByUser = true;
 	return p->getScriptObject();
 }
