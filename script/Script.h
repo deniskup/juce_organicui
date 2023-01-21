@@ -103,6 +103,7 @@ public:
 	static var addTriggerFromScript(const var::NativeFunctionArgs& args);
 	static var addBoolParameterFromScript(const var::NativeFunctionArgs& args);
 	static var addIntParameterFromScript(const var::NativeFunctionArgs& args);
+	static var addIntRangeParameterFromScript(const var::NativeFunctionArgs& args);
 	static var addFloatParameterFromScript(const var::NativeFunctionArgs& args);
 	static var addStringParameterFromScript(const var::NativeFunctionArgs& args);
 	static var addEnumParameterFromScript(const var::NativeFunctionArgs& args);

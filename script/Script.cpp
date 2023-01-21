@@ -51,6 +51,7 @@ Script::Script(ScriptTarget* _parentTarget, bool canBeDisabled, bool canBeRemove
 	scriptObject.setMethod("addTrigger", Script::addTriggerFromScript);
 	scriptObject.setMethod("addBoolParameter", Script::addBoolParameterFromScript);
 	scriptObject.setMethod("addIntParameter", Script::addIntParameterFromScript);
+	scriptObject.setMethod("addIntRangeParameter", Script::addIntRangeParameterFromScript);
 	scriptObject.setMethod("addFloatParameter", Script::addFloatParameterFromScript);
 	scriptObject.setMethod("addStringParameter", Script::addStringParameterFromScript);
 	scriptObject.setMethod("addEnumParameter", Script::addEnumParameterFromScript);
@@ -540,6 +541,15 @@ var Script::addColorParameterFromScript(const var::NativeFunctionArgs& args)
 	}
 
 	Parameter* p = s->scriptParamsContainer->addColorParameter(args.arguments[0], args.arguments[1], Colour((uint8)(int)color[0], (uint8)(int)color[1], (uint8)(int)color[2], (uint8)(int)color[3]));
+	p->isCustomizableByUser = true;
+	return p->getScriptObject();
+}
+
+var Script::addIntRangeParameterFromScript(const var::NativeFunctionArgs& args)
+{
+	Script* s = getObjectFromJS<Script>(args);
+	if (!checkNumArgs(s->niceName, args, 2)) return var();
+	Parameter* p = s->scriptParamsContainer->addIntRangeParameter(args.arguments[0], args.arguments[1]);
 	p->isCustomizableByUser = true;
 	return p->getScriptObject();
 }
